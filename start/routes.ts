@@ -24,3 +24,5 @@ router.get('/shop', [BarangsController, 'index'])
 
 router.get('/shop/items/:name', [BarangsController, 'show'])
 router.get('/shop/pay', [BarangsController, 'pay'])
+
+router.get('/schedule', [HomeController, 'schedule'])

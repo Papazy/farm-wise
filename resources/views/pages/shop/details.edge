@@ -1,6 +1,7 @@
 @layout.app()
 
 @let(number = 0)
+@let(amount = 10000)
 <div class="section">
   <div class="gambar w-full flex items-center justify-center">
     <img src="{{ asset('public/images/tomat.png') }}" alt="Tomat" class="">
@@ -21,7 +22,8 @@
         Tomat adalah buah yang sering digunakan sebagai sayuran. Tomat memiliki banyak manfaat bagi kesehatan tubuh. Tomat mengandung vitamin C yang tinggi, sehingga baik untuk menjaga daya tahan tubuh.
       </p>
     </div>
-    <div class="right flex-1 p-4 flex items-center justify-center mr-40">
+    <div class="right flex-1 p-4 flex items-center justify-center gap-4 mr-40">
+      <p class="">Total : <div id="amount">0</div></p>
       @!button.solid({ text: 'Pay', path: '/shop/pay'})
     </div>
   </div>
@@ -31,14 +33,18 @@
   const numberItems = document.getElementById('numberItems');
   const decrease = document.getElementById('decrease');
   const increase = document.getElementById('increase');
+  const amountValue = document.getElementById('amount');
 
   decrease.addEventListener('click', () => {
     if(parseInt(numberItems.value) <= 0) return;
     numberItems.value = parseInt(numberItems.value) - 1;
+    amountValue.innerHTML = parseInt(numberItems.value) * parsetInt(amount);
+    
   });
-
+  
   increase.addEventListener('click', () => {
     numberItems.value = parseInt(numberItems.value) + 1;
+    amountValue.innerHTML = parseInt(numberItems.value) * parseInt(amount);
   });
   </script>
 @end
