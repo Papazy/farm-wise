@@ -8,4 +8,10 @@ export default class AuthController {
   async signup({ view }: HttpContext) {
     return view.render('pages/auth/signup')
   }
+
+  async create({ request, response }: HttpContext) {
+    const body = request.all()
+    console.log(body)
+    return body
+  }
 }
