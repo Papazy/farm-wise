@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script> 
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+
+
+<body>
+  @include('components/layout/partials/navbar')
+  <div class="content topbar flex gap-5 justify-center items-center mt-10">
+    @!button.simple( {
+      text: 'Popular',
+      isActive : true,
+      path: 'popular',
+    })
+    @!button.simple( {
+      text: 'Vegetables',
+      isActive : false,
+    })
+    @!button.simple( {
+      text: 'Fruits',
+      isActive : false,
+    })
+    @!button.simple( {
+      text: 'Fertilizer',
+      isActive : false,
+    })
+    @!button.simple( {
+      text: 'Farming tools',
+      isActive : false,
+    })
+  </div>
+  <div class="content flex items-center justify-center gap-5 flex-wrap mt-10 ">
+    @!component('components/card-simple.edge',{
+      nama: 'Tomat',
+      filename : 'tomat.png',
+      path : 'tomat',
+      harga : 10000
+    })
+
+    @!component('components/card-simple.edge',{
+      nama: 'Brokoli',
+      filename : 'brokoli.png',
+      path : 'brokoli',
+      harga : 2000
+    })
+    @!component('components/card-simple.edge',{
+      nama: 'Bawang',
+      filename : 'bawang.png',
+      path : 'bawang',
+      harga : 50000
+    })
+   
+  </div>
+</body>
+</html>

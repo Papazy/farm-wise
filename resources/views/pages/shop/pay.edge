@@ -1,0 +1,14 @@
+@layout.app()
+<div class="content">
+  <p>Total : <span>{{ total ? total : '0' }}</span></p>
+</div>
+<div class="content flex flex-col justify-center items-center mt-10">
+  <p class="font-bold text-3xl my-5">Pilih Metode Pembayaran</p>
+  <div class="flex flex-wrap gap-10 my-5">
+    @!card.simpleWhite({filename: "bsi.png"})
+    @!card.simpleWhite({filename: "bca.png"})
+    @!card.simpleWhite({filename: "bank-aceh.png"})
+    @!card.simpleWhite({filename: "dana.png"})
+</div>
+
+@end

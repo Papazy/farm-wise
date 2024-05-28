@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/public/fonts/Poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'inter';
+  src: url('/public/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf');
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-poppins-italic {
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+}
+
+.font-inter {
+  font-family: 'inter', sans-serif;
+}
+
+.font-inter-italic {
+  font-family: 'inter', sans-serif;
+  font-style: italic;
+}

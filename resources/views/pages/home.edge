@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> AdonisJS - A fully featured web framework for Node.js </title>
+
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body>
+  @include('components/layout/partials/navbar')
+
+  <div class="content main mx-10">
+    <div class="section flex justify-center items-center h-screen">
+      <div class="section w-[80%] flex flex-col ml-20">
+      <h1 class="text-7xl mr-0 pr-0 font-bold mb-10">A place where everything is special...</h1>
+      <p class="text-lg w-[80%]" >We help you with fresh farm produce for your home. Healthy fresh food and also good farming tools.</p>
+      <div class=" mt-5">
+        <a href="/" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+          Order Here
+        </a>
+      </div>
+    </div>
+    <div class="section">
+      <img src="{{ asset('/public/images/tomat.png') }}" alt="tomat" height="1500" width="1500">
+    </div>
+  </div>
+
+
+  <div class="content flex justify-center items-center text-3xl font-poppins-italic font-bold flex-col">
+    <p>Tested and Trusted.</p>
+    <p>Health fresh food and also good farming tools.</p>
+  </div>
+  <div class="content mt-10 mx-5 flex items-center justify-center px-10 gap-10 font-inter">
+    <div class="section ">
+      <p class="text-3xl font-extrabold mb-4">Farm Wise has got you covered in serving your daily needs</p>
+      <p class="text-teal-700 mb-4">Built to solve our users problem, commitment in makin our users happy our vision is to make the users meet their expectations.</p>
+      <div class="flex flex-col my-10 gap-4">
+        
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </svg>
+        <span class="text-xl">Interavtive user experience</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </svg>
+        <span class="text-xl">Best service than others</span>
+      </div>
+      <div class="flex items-center gap-2 ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </svg>
+        <span class="text-xl">User friendly app</span>
+      </div>
+    </div>
+      <a href="/" class="ml-5 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+        Order Here
+      </a>
+    </div>
+    <div class="section flex justify-center items-center gap-2 pb-20">
+      <div class="left">
+        <div class="card border border-[#72F2706B]/70 shadow-md rounded-xl p-5 mb-2">
+          <div class="flex items-center justify-center rounded-full bg-yellow-100 w-[40px] h-[40px] mb-7">
+            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.5 0L0 8.33333V25H25V8.33333L12.5 0ZM13.2812 13.1944C13.2812 14.3472 12.2344 15.2778 10.9375 15.2778V20.8333H9.375V15.2778C8.07812 15.2778 7.03125 14.3472 7.03125 13.1944V9.02778H8.59375V13.1944H9.375V9.02778H10.9375V13.1944H11.7188V9.02778H13.2812V13.1944ZM17.1875 20.8333H15.625V15.9722H14.0625V11.8056C14.0625 10.2778 15.4688 9.02778 17.1875 9.02778V20.8333Z" fill="#10870E"/>
+              </svg>
+          </div>
+          <p class="mb-3 font-bold text-xl">Fresh Food</p>
+          <p class="text-slate-500 text-sm">Directly from the farm eat fresh and stay healthy. </p>
+        </div>
+        <div class="card border border-[#72F2706B]/70 shadow-md rounded-xl p-5">
+          <div class="flex items-center justify-center rounded-full bg-yellow-100 w-[40px] h-[40px] mb-7">
+            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.0588 0.0113636L7.35294 0C5.73529 0 4.41176 1.02273 4.41176 2.27273V5.68182H7.35294V4.54545H22.0588V20.4545H7.35294V19.3182H4.41176V22.7273C4.41176 23.9773 5.73529 25 7.35294 25H22.0588C23.6765 25 25 23.9773 25 22.7273V2.27273C25 1.02273 23.6765 0.0113636 22.0588 0.0113636ZM10.2941 15.9091H13.2353V7.95455H2.94118V10.2273H8.22059L0 16.5795L2.07353 18.1818L10.2941 11.8295V15.9091Z" fill="#10870E"/>
+              </svg>
+              
+          </div>
+          <p class="mb-3 font-bold text-xl">Live tracking</p>
+          <p class="text-slate-500 text-sm">Keep a tab on your purchased items. </p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="card border border-[#72F2706B]/70 shadow-md rounded-xl p-5">
+          <div class="flex items-center justify-center rounded-full bg-yellow-100 w-[40px] h-[40px] mb-7">
+            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.5 0C6.25 0 0 0.657895 0 5.26316V17.7632C0 19.0132 0.59375 20.1447 1.5625 20.9737V23.6842C1.5625 24.4079 2.26562 25 3.125 25H4.6875C5.54688 25 6.25 24.4079 6.25 23.6842V22.3684H18.75V23.6842C18.75 24.4079 19.4531 25 20.3125 25H21.875C22.7344 25 23.4375 24.4079 23.4375 23.6842V20.9737C24.4062 20.1447 25 19.0132 25 17.7632V5.26316C25 0.657895 19.4062 0 12.5 0ZM7.03125 18.4211C5.73438 18.4211 4.6875 17.5395 4.6875 16.4474C4.6875 15.3553 5.73438 14.4737 7.03125 14.4737C8.32812 14.4737 9.375 15.3553 9.375 16.4474C9.375 17.5395 8.32812 18.4211 7.03125 18.4211ZM17.9688 18.4211C16.6719 18.4211 15.625 17.5395 15.625 16.4474C15.625 15.3553 16.6719 14.4737 17.9688 14.4737C19.2656 14.4737 20.3125 15.3553 20.3125 16.4474C20.3125 17.5395 19.2656 18.4211 17.9688 18.4211ZM21.875 10.5263H3.125V6.57895H21.875V10.5263Z" fill="#10870E"/>
+              </svg>
+              
+          </div>
+          <p class="mb-3 font-bold text-xl">Fast and low cost delivery</p>
+          <p class="text-slate-500 text-sm">We have the fastest delivery service, at a very affordable price.</p>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+
+  @include('components/layout/partials/footer')
+</body>
+</html>
