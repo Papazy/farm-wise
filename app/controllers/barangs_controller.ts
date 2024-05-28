@@ -29,6 +29,14 @@ export default class BarangsController {
     return view.render('pages/shop/pay')
   }
 
+  async card({ view }: HttpContext) {
+    return view.render('pages/shop/card')
+  }
+
+  async status({ view }: HttpContext) {
+    return view.render('pages/shop/status')
+  }
+
   async update({ request, response }: HttpContext) {
     const body = request.all()
     console.log(body)

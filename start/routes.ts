@@ -26,5 +26,7 @@ router.get('/shop/items/:name', [BarangsController, 'show'])
 router.get('/shop/pay', [BarangsController, 'pay'])
 
 router.get('/schedule', [HomeController, 'schedule'])
+router.get('/shop/pay/card', [BarangsController, 'card'])
+router.get('/shop/status', [BarangsController, 'status'])
 
 router.post('/user/create', [AuthController, 'create'])
