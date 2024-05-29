@@ -28,6 +28,7 @@ export default class BarangsController {
         case 'alat-bertani':
           item.kategori = 'Farming Tools'
           item.path = 'farming-tools'
+          // eslint-disable-next-line eqeqeq
           item.isActive = type == 'farming-tools' ? true : false
           break
       }
@@ -92,7 +93,7 @@ export default class BarangsController {
     // generatelah satu key private yang unik terdiri dari 5 karakter abjad atau lebih
     const key = Math.random().toString(36).substring(2, 7)
 
-    return view.render('pages/shop/status', {barang, total, key})
+    return view.render('pages/shop/status', { barang, total, key })
   }
 
   async update({ request, response }: HttpContext) {

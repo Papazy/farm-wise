@@ -6,13 +6,16 @@ export default class Event extends BaseModel {
   declare id: number
 
   @column()
+  declare username: string
+
+  @column()
   declare judul: string
 
   @column()
-  declare jamMulai: string
+  declare jam_mulai: string
 
   @column()
-  declare jamAkhir: string
+  declare jam_akhir: string
 
   @column()
   declare tanggal: string
