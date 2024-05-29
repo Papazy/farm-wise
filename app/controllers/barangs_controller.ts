@@ -32,6 +32,12 @@ export default class BarangsController {
           break
       }
     })
+
+    categories.push({
+      kategori: 'Popular',
+      path: '',
+      isActive: type ? false : true,
+    })
     console.log(categories)
     console.log(barangData)
     return view.render('pages/shop/shop', { barangs: barangData, categories })
@@ -70,12 +76,23 @@ export default class BarangsController {
     return view.render('pages/shop/pay', { barang, total })
   }
 
-  async card({ view }: HttpContext) {
-    return view.render('pages/shop/card')
+  async card({ view, request }: HttpContext) {
+    const item = request.input('item')
+    const total = request.input('total')
+
+    return view.render('pages/shop/card', { total, item })
   }
 
-  async status({ view }: HttpContext) {
-    return view.render('pages/shop/status')
+  async status({ view, request }: HttpContext) {
+    const keyName = request.input('item')
+    const total = request.input('total')
+
+    const barang = await Barang.query().where('key', keyName).first()
+
+    // generatelah satu key private yang unik terdiri dari 5 karakter abjad atau lebih
+    const key = Math.random().toString(36).substring(2, 7)
+
+    return view.render('pages/shop/status', {barang, total, key})
   }
 
   async update({ request, response }: HttpContext) {

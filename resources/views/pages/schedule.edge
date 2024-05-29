@@ -21,14 +21,13 @@
   <div class="card rounded-xl bg-green-300 p-10 mt-10">
     <div class="top-bar flex justify-between items-center">
       <p class="text-xl font-bold">Incoming Events</p>
-      @!button.bulat({content: '+'})
+      @!button.bulatLink({content: '+', path: '/schedule/add-event'})
     </div>
 
     {{--  {{ inspect(state) }}  --}}
     <div class="event-wrapper my-5 flex flex-col gap-5">
       @!card.event({tasks : ['Siram Tanaman', 'Beri pupuk'], waktu: ['09:00', '10:00', 'AM']})
       @!card.event({tasks : ['Siram Tanaman'], waktu: ['09:00', '10:00', 'AM']})
-
   </div>
 </div>
 @end

@@ -18,10 +18,10 @@
 <div class="content flex flex-col justify-center items-center mt-10">
   <p class="font-bold text-3xl my-5">Pilih Metode Pembayaran</p>
   <div class="flex flex-wrap gap-10 my-5">
-    @!card.simpleWhite({filename: "bsi.png"})
-    @!card.simpleWhite({filename: "bca.png"})
-    @!card.simpleWhite({filename: "bank-aceh.png"})
-    @!card.simpleWhite({filename: "dana.png"})
+    @!card.simpleWhite({filename: "bsi.png", nama: barang.key, total: total})
+    @!card.simpleWhite({filename: "bca.png", nama: barang.key, total: total})
+    @!card.simpleWhite({filename: "bank-aceh.png", nama: barang.key, total: total})
+    @!card.simpleWhite({filename: "dana.png", nama: barang.key, total: total})
 </div>
 
 @end

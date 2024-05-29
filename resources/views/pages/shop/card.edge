@@ -2,7 +2,7 @@
   <div class="flex flex-col space-y-4 mx-80">
     <label for="creditNumber" class="text-lg">Credit Number</label>
     <input type="text" id="creditNumber" name="creditNumber" class="border border-gray-300 rounded-md p-2" placeholder="Enter your credit number">
-    <a href="/shop/status" class="py-2 px-4 cursor-pointer border border-green-700 font-semibold rounded-lg hover:bg-green-700 hover:text-white {{ isActive ? 'bg-green-700 text-white' : 'bg-white text-green-700' }}">
+    <a href="/shop/status?{{ 'item='+item+'&total='+total }}" class="py-2 px-4 cursor-pointer border border-green-700 font-semibold rounded-lg hover:bg-green-700 hover:text-white {{ isActive ? 'bg-green-700 text-white' : 'bg-white text-green-700' }}">
       <p class="text-center">submit</p>
     </a>
   </div>
