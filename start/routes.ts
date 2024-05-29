@@ -36,6 +36,7 @@ router
         router.get('/shop/status', [BarangsController, 'status'])
         router.get('/shop/pay', [BarangsController, 'pay'])
         router.get('/schedule', [HomeController, 'schedule'])
+        router.get('/profile', [HomeController, 'profile'])
         router.get('/schedule/add-event', [HomeController, 'addEvent'])
       })
       .use([middleware.authenticate()])

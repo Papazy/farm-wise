@@ -16,4 +16,8 @@ export default class HomeController {
   async addEvent({ view }: HttpContext) {
     return view.render('pages/add-event')
   }
+
+  async profile({ view }: HttpContext) {
+    return view.render('pages/profile')
+  }
 }

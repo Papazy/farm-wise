@@ -19,8 +19,7 @@
     <div class="relative mr-14">
       <div class="hover:text-gray-300 hover:cursor-pointer" id="profile-dropdown">{{ auth.user.username}}</div>
       <div class="absolute left-0 mt-2 hidden bg-green-700 text-white rounded shadow-lg" id="profile-dropdown-menu">
-        <div class="bg-green-700"><a href="#" class="block px-4 py-2 hover:text-green-700 hover:bg-gray-100">Profile</a></div>
-        <div class="bg-green-700"><a href="#" class="block px-4 py-2 hover:text-green-700 hover:bg-gray-100">Settings</a></div>
+        <div class="bg-green-700"><a href="/profile" class="block px-4 py-2 hover:text-green-700 hover:bg-gray-100">Profile</a></div>
         <form action="/logout" method="POST" class="p-0">
           {{ csrfField() }}
           <button type="submit" class="bg-green-700 block px-6 py-2 hover:text-green-700 hover:bg-gray-100">Logout</button>
