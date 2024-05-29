@@ -8,6 +8,7 @@
 */
 
 import router from '@adonisjs/core/services/router'
+import { middleware } from './kernel.js'
 const HomeController = () => import('#controllers/home_controller')
 const AuthController = () => import('#controllers/auth_controller')
 const BarangsController = () => import('#controllers/barangs_controller')
@@ -16,17 +17,33 @@ const BarangsController = () => import('#controllers/barangs_controller')
 // router.on('/signup').render('pages/auth/signup')
 // router.on('/shop').render('pages/shop/shop')
 
-router.get('/', [HomeController, 'index'])
-router.get('/login', [AuthController, 'login'])
-router.get('/signup', [AuthController, 'signup'])
-router.get('/shop/category/:name?', [BarangsController, 'index'])
-router.get('/shop', [BarangsController, 'index'])
+router
+  .group(() => {
+    router.get('/shop/category/:name?', [BarangsController, 'index'])
+    router.get('/shop', [BarangsController, 'index'])
 
-router.get('/shop/items/:name', [BarangsController, 'show'])
-router.get('/shop/pay', [BarangsController, 'pay'])
+    router.get('/shop/items/:name', [BarangsController, 'show'])
 
-router.get('/schedule', [HomeController, 'schedule'])
-router.get('/shop/pay/card', [BarangsController, 'card'])
-router.get('/shop/status', [BarangsController, 'status'])
+    router.post('/signup', [AuthController, 'create'])
+    router.post('/login', [AuthController, 'signin'])
+    router.get('/', [HomeController, 'index'])
 
-router.post('/user/create', [AuthController, 'create'])
+    router.post('/logout', [AuthController, 'logout'])
+
+    router
+      .group(() => {
+        router.get('/shop/pay/card', [BarangsController, 'card'])
+        router.get('/shop/status', [BarangsController, 'status'])
+        router.get('/shop/pay', [BarangsController, 'pay'])
+        router.get('/schedule', [HomeController, 'schedule'])
+      })
+      .use([middleware.authenticate()])
+
+    router
+      .group(() => {
+        router.get('/login', [AuthController, 'login'])
+        router.get('/signup', [AuthController, 'signup'])
+      })
+      .use([middleware.redirectIfAuthenticated()])
+  })
+  .use(middleware.checkAuth())

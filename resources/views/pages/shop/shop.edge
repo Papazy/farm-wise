@@ -12,32 +12,29 @@
 
 
 <body>
-  @include('components/layout/partials/navbar2')
+  @include('components/layout/partials/navbar')
   <div class="content topbar flex gap-5 justify-center items-center mt-10">
+    @each(category in categories)
     @!button.simple( {
-      text: 'Popular',
-      isActive : true,
-      path: 'popular',
+      text: category.kategori,
+      isActive : category.isActive,
+      path: '/shop?c='+category.path,
     })
-    @!button.simple( {
-      text: 'Vegetables',
-      isActive : false,
-    })
-    @!button.simple( {
-      text: 'Fruits',
-      isActive : false,
-    })
-    @!button.simple( {
-      text: 'Fertilizer',
-      isActive : false,
-    })
-    @!button.simple( {
-      text: 'Farming tools',
-      isActive : false,
-    })
+    @end
+    
   </div>
   <div class="content flex items-center justify-center gap-5 flex-wrap mt-10 ">
+
+    @each(barang in barangs)
     @!component('components/card-simple.edge',{
+      nama: barang.nama,
+      filename : barang.path_gambar,
+      path : barang.key,
+      harga : barang.harga,
+      satuan : barang.satuan
+    }) 
+    @end
+    {{--  @!component('components/card-simple.edge',{
       nama: 'Tomat',
       filename : 'tomat.png',
       path : 'tomat',
@@ -55,7 +52,7 @@
       filename : 'bawang.png',
       path : 'bawang',
       harga : 50000
-    })
+    })  --}}
    
   </div>
 </body>

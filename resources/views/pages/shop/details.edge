@@ -1,17 +1,20 @@
 @layout.app()
 
 @let(number = 0)
-@let(amount = 10000)
+@let(amount = barang.harga)
 <div class="section">
+  
   <div class="gambar w-full flex items-center justify-center">
-    <img src="{{ asset('public/images/tomat.png') }}" alt="Tomat" class="">
+    <img src="{{ asset('public/images/'+barang.path_gambar) }}" alt="Tomat" class="">
   </div>
+  <form action="/shop/pay">
   <div class="description text-center">
-    <div class="p text-xl font-semibold">Tomat</div>
-    <div class="harga text-lg">Rp 10000/kg</div>
+    <div class="p text-xl font-semibold">{{ barang.nama }}</div>
+    <div class="harga text-lg">Rp {{barang.harga}}/{{barang.satuan}}</div>
     <div class="jumlah flex items-center justify-center gap-5 mt-4">
       @!button.bulat({ id: 'decrease', content: '-'})
-      <input id="numberItems" class="number text-xl w-fit text-center" value="{{ number }}" readonly>
+      <input type="hidden" name="id" value="{{ barang.id }}">
+      <input id="numberItems" class="number text-xl w-fit text-center" value="0" name="total" readonly>
       @!button.bulat({ id: 'increase', content: '+' })
     </div>
   </div>
@@ -19,14 +22,15 @@
     <div class="left flex-1 p-4 ml-40">
       <p class="font-bold">Deskripsi</p>
       <p>
-        Tomat adalah buah yang sering digunakan sebagai sayuran. Tomat memiliki banyak manfaat bagi kesehatan tubuh. Tomat mengandung vitamin C yang tinggi, sehingga baik untuk menjaga daya tahan tubuh.
+        {{ barang.deskripsi }}
       </p>
     </div>
     <div class="right flex-1 p-4 flex items-center justify-center gap-4 mr-40">
       <p class="">Total : <div id="amount">0</div></p>
-      @!button.solid({ text: 'Pay', path: '/shop/pay'})
+      @!button.submit({ text: 'Pay'})
     </div>
   </div>
+</form>
 </div>
 
 <script>
@@ -38,13 +42,17 @@
   decrease.addEventListener('click', () => {
     if(parseInt(numberItems.value) <= 0) return;
     numberItems.value = parseInt(numberItems.value) - 1;
-    amountValue.innerHTML = parseInt(numberItems.value) * parsetInt(amount);
+    amountValue.innerHTML = parseInt(numberItems.value) * {{ barang.harga }};
     
-  });
+  }); 
   
   increase.addEventListener('click', () => {
     numberItems.value = parseInt(numberItems.value) + 1;
-    amountValue.innerHTML = parseInt(numberItems.value) * parseInt(amount);
+    amountValue.innerHTML = parseInt(numberItems.value) * {{ barang.harga }};
   });
   </script>
+
+
+  
+
 @end

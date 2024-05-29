@@ -1,8 +1,40 @@
 import type { HttpContext } from '@adonisjs/core/http'
+import db from '@adonisjs/lucid/services/db'
+import Barang from '#models/barang'
 
 export default class BarangsController {
-  async index({ view }: HttpContext) {
-    return view.render('pages/shop/shop')
+  async index({ view, request }: HttpContext) {
+    const type = request.input('c')
+
+    const barangs = await Barang.all()
+
+    //mendapatkan barang sesuai type bila ada type
+    const typeIndo = this.translate(type)
+    const barangData = typeIndo ? barangs.filter((item) => item.kategori === typeIndo) : barangs
+
+    const categories = await db.from('barangs').select('kategori').distinct('kategori')
+    categories.map((item) => {
+      switch (item.kategori) {
+        case 'sayuran':
+          item.kategori = 'Vegetables'
+          item.path = 'vegetables'
+          item.isActive = type == 'vegetables' ? true : false
+          break
+        case 'buah':
+          item.kategori = 'Fruits'
+          item.path = 'fruits'
+          item.isActive = type == 'fruits' ? true : false
+          break
+        case 'alat-bertani':
+          item.kategori = 'Farming Tools'
+          item.path = 'farming-tools'
+          item.isActive = type == 'farming-tools' ? true : false
+          break
+      }
+    })
+    console.log(categories)
+    console.log(barangData)
+    return view.render('pages/shop/shop', { barangs: barangData, categories })
   }
 
   async create({ view }: HttpContext) {
@@ -16,17 +48,26 @@ export default class BarangsController {
   }
 
   async show({ view, params }: HttpContext) {
-    const barang = params.name
-    return view.render('pages/shop/details', {
-      name: barang,
-      harga: 10000,
-      stok: 10,
-      description: `Ini adalah barang ${barang} yang sangat bagus dan berkualitas. Segera dapatkan barang ${barang} ini sebelum kehabisan! Harga hanya Rp. 10.000,- saja!`,
-    })
+    const name = params.name
+
+    const barang = await Barang.query().where('key', name).first()
+
+    return view.render('pages/shop/details', { barang })
   }
 
-  async pay({ view }: HttpContext) {
-    return view.render('pages/shop/pay')
+  async pay({ view, request, response, session }: HttpContext) {
+    const { id, total } = request.all()
+    console.log(id)
+    console.log(total)
+    if (total == 0) {
+      session.flash('error', {
+        message: 'Total tidak boleh 0',
+      })
+      response.redirect().back()
+    }
+    const barang = await Barang.find(id)
+
+    return view.render('pages/shop/pay', { barang, total })
   }
 
   async card({ view }: HttpContext) {
@@ -45,5 +86,16 @@ export default class BarangsController {
 
   async destroy({ response }: HttpContext) {
     response.redirect().toRoute('barangs.index')
+  }
+
+  translate = (type: string) => {
+    switch (type) {
+      case 'vegetables':
+        return 'sayuran'
+      case 'fruits':
+        return 'buah'
+      case 'farming-tools':
+        return 'alat-bertani'
+    }
   }
 }

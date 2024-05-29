@@ -2,7 +2,7 @@
   <img src="{{ asset('/public/images/'+filename) }}" alt="tomat" width="300">
   <div class="px-6 py-4 flex items-center justify-center gap-10">
     <div class="font-bold text-xl">{{ nama }}</div>
-    <div class="harga flex items-center justify-center font-poppins">Rp.<div class="font-bold">{{ harga }}</div> /kg</div>
+    <div class="harga flex items-center justify-center font-poppins">Rp.<div class="font-bold">{{ harga }}</div> /{{satuan}}</div>
   </div>
   <div class="px-6 pt-4 pb-2">
     <a href="/shop/items/{{ path }}" class="bg-green-700 text-white font-semibold py-2 px-4 rounded hover:bg-green-800 cursor-pointer">

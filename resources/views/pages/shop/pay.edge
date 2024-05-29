@@ -5,11 +5,13 @@
 
     <div class="left">
       
-      <img src="{{ asset('public/images/tomat.png') }}" alt="Tomat" class="" width="300">
+      <img src="{{ asset('public/images/'+barang.path_gambar) }}" alt="Tomat" class="" width="300">
     </div>
     <div class="right">
-      <p><span class="font-bold"> Banyak :</span> 2</p>
-      <p><span class="font-bold"> Total :</span> 20.000</p>
+      
+      <p><span class="font-bold"> Barang :</span> {{barang.nama}}</p>
+      <p><span class="font-bold"> Banyak :</span> x{{total}}</p>
+      <p><span class="font-bold"> Total :</span> {{ total * barang.harga }}</p>
 </div>
 </div>
 </div>

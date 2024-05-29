@@ -10,18 +10,24 @@
       <li><a href="https://wa.me/12345678" class="hover:text-gray-300">Contact Us</a></li>
      
     </ul>
+    
+    @if(auth.user)
+    <div class="relative mr-14">
+      <div class="hover:text-gray-300 hover:cursor-pointer" id="profile-dropdown">{{ auth.user.username}}</div>
+      <div class="absolute left-0 mt-2 hidden bg-green-700 text-white rounded shadow-lg" id="profile-dropdown-menu">
+        <div class="bg-green-700"><a href="#" class="block px-4 py-2 hover:text-green-700 hover:bg-gray-100">Profile</a></div>
+        <div class="bg-green-700"><a href="#" class="block px-4 py-2 hover:text-green-700 hover:bg-gray-100">Settings</a></div>
+        <form action="/logout" method="POST" class="p-0">
+          {{ csrfField() }}
+          <button type="submit" class="bg-green-700 block px-6 py-2 hover:text-green-700 hover:bg-gray-100">Logout</button>
+        </form>
+      </div>
+    @else
     <div class="button-wrapper flex space-x-4">
       <a href="/login" class="py-2 px-4 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-800">Login</a>
       <a href="/signup" class="py-2 px-4 bg-white text-green-700 border border-green-700 font-semibold rounded-lg hover:bg-green-700 hover:text-white">Sign Up</a>
+    @end
     </div>
-      {{--  <div class="relative">
-        <div class="hover:text-gray-300 hover:cursor-pointer" id="profile-dropdown">User</div>
-        <div class="absolute left-0 mt-2 hidden bg-black text-gray-700 rounded shadow-lg" id="profile-dropdown-menu">
-          <div class="bg-black"><a href="#" class="block px-4 py-2  hover:bg-gray-100">Profile</a></div>
-          <div class="bg-black"><a href="#" class="block px-4 py-2  hover:bg-gray-100">Settings</a></div>
-          <div class="bg-black"><a href="#" class="block px-4 py-2  hover:bg-gray-100">Logout</a></li>
-        </div>
-      </div>  --}}
   </div>
 </nav>
 
