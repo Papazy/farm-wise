@@ -21,7 +21,7 @@
           <p class="text-3xl font-bold tracking-wide text-white pl-40"> To Farm Wise App</p>
         </div>
         <form action="/signup" method="POST">
-          @if (flashMessages.has('form'))
+        @if (flashMessages.has('form'))
           <div role="alert">
             {{ flashMessages.get('form') }}
           </div>

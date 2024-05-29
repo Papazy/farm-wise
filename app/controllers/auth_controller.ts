@@ -10,12 +10,16 @@ export default class AuthController {
     return view.render('pages/auth/signup')
   }
   async signin({ request, response, auth, session }: HttpContext) {
-    const { email, password } = request.all()
+    const { email, password, role } = request.all()
 
     // const user = await User.query().where('email', email).where('password', password).first()
 
     const user = await User.verifyCredentials(email, password)
 
+    if (user?.role !== role) {
+      session.flash('error', 'Role tidak sesuai')
+      return response.redirect('/login')
+    }
     await auth.use('web').login(user)
 
     return response.redirect('/')
