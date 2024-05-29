@@ -8,4 +8,12 @@ export default class HomeController {
   async schedule({ view }: HttpContext) {
     return view.render('pages/schedule')
   }
+
+  async about({ view }: HttpContext) {
+    return view.render('pages/about')
+  }
+
+  async addEvent({ view }: HttpContext) {
+    return view.render('pages/add-event')
+  }
 }

@@ -1,0 +1,32 @@
+@layout.app()
+
+<div class="flex flex-col justify-center items-center">
+
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6">Tambah Event</h2>
+  <form action="/add-event" method="POST">
+    <div class="mb-4">
+      <label for="judul" class="block text-gray-700">Judul Kegiatan</label>
+      <input type="text" id="judul" name="judul" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+    </div>
+    <div class="mb-4">
+      <label for="jam_mulai" class="block text-gray-700">Jam Mulai</label>
+      <input type="time" id="jam_mulai" name="jam_mulai" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+    </div>
+    <div class="mb-4">
+      <label for="jam_akhir" class="block text-gray-700">Jam Akhir</label>
+      <input type="time" id="jam_akhir" name="jam_akhir" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+    </div>
+    <div class="mb-4">
+      <label for="tanggal" class="block text-gray-700">Tanggal</label>
+      <input type="date" id="tanggal" name="tanggal" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+    </div>
+    <div class="flex items-center justify-between">
+      <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Tambah</button>
+      <button type="reset" class="bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Reset</button>
+    </div>
+  </form>
+</div>
+</div>
+
+@end
