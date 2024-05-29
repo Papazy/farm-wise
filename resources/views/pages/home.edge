@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> AdonisJS - A fully featured web framework for Node.js </title>
-
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body>
-  @include('components/layout/partials/navbar')
-
+@layout.app()
   <div class="content main mx-10">
     <div class="section flex justify-center items-center h-screen">
       <div class="section w-[80%] flex flex-col ml-20">
@@ -102,5 +91,4 @@
 
 
   @include('components/layout/partials/footer')
-</body>
-</html>
+@end

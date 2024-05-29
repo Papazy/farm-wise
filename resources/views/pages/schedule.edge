@@ -3,19 +3,19 @@
   <div class="title my-10">
     <p class="text-2xl font-bold ">Schedule</p>
   </div>
-    <div class="card rounded-xl bg-green-300 p-10">
-      <div class="flex justify-between items-center font-bold text-xl">
-        <p>This Week</p>
-        <p>Next Week</p>
-      </div>
-      <div class="date-wrapper flex justify-center items-center gap-20">
-        @!button.date({date: 12, day : 'S'})
-        @!button.date({date: 13, day : 'S'})
-        @!button.date({date: 14, day : 'R'})
-        @!button.date({date: 15, day : 'K'})
-        @!button.datee({date: 16, day : 'J'})
-        @!button.date({date: 17, day : 'S'})
-        @!button.date({date: 18, day : 'M'})
+  <div class="card rounded-xl bg-green-300 p-10">
+    <div class="flex justify-between items-center font-bold text-xl">
+      <a href="/schedule?d={{ dayWeekBefore }}">This Week</a>
+      <a href="/schedule?d={{ dayWeekAfter }}">Next Week</a>
+    </div>
+    <div class="date-wrapper flex justify-center items-center gap-20">
+      @!button.date({date: weekDates[0], day : 'S', selectedDate: selectedDate})
+      @!button.date({date: weekDates[1], day : 'S', selectedDate: selectedDate})
+      @!button.date({date: weekDates[2], day : 'R', selectedDate: selectedDate})
+      @!button.date({date: weekDates[3], day : 'K', selectedDate: selectedDate})
+      @!button.date({date: weekDates[4], day : 'J', selectedDate: selectedDate})
+      @!button.date({date: weekDates[5], day : 'S', selectedDate: selectedDate})
+      @!button.date({date: weekDates[6], day : 'M', selectedDate: selectedDate})
     </div>
   </div>
   <div class="card rounded-xl bg-green-300 p-10 mt-10">
@@ -24,13 +24,14 @@
       @!button.bulatLink({content: '+', path: '/schedule/add-event'})
     </div>
 
-    {{--  {{ inspect(state) }}  --}}
+    
     <div class="event-wrapper my-5 flex flex-col gap-5">
+      @let(index = 0)
       @each(item in events)
-      @!card.event({tasks : [item.judul], waktu: [item.jam_mulai, item.jam_akhir, 'WIB']})
+      @!card.event({tasks : kegiatan[index], waktu: [item.jam_mulai.split(':').slice(0, 2).join(':'), item.jam_akhir.split(':').slice(0, 2).join(':'), 'WIB']})
+      @assign(index = index + 1)
       @endeach
-      {{--  @!card.event({tasks : ['Siram Tanaman', 'Beri pupuk'], waktu: ['09:00', '10:00', 'AM']})
-      @!card.event({tasks : ['Siram Tanaman'], waktu: ['09:00', '10:00', 'AM']})  --}}
+    </div>
   </div>
 </div>
 @end

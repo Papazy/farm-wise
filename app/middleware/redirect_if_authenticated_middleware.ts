@@ -6,7 +6,7 @@ export default class RedirectIfAuthenticatedMiddleware {
     /**
      * Middleware logic goes here (before the next call)
      */
-    console.log(ctx)
+    
     try {
       await ctx.auth.check()
       if (ctx.auth.user) {

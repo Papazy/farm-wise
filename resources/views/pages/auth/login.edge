@@ -22,8 +22,8 @@
         </div>
         {{--  buatlah notif error  --}}
       @if (flashMessages.has('error'))
-        <div role="alert" style="color:red">
-          {{ flashMessages.get('error') }}
+        <div class="p-2 bg-green-800 rounded" role="alert" style="color:red" >
+          ! {{ flashMessages.get('error') }}
         </div>
       @endif
         <form action="/login" method="POST">

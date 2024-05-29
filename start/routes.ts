@@ -28,18 +28,18 @@ router
     router.post('/signup', [AuthController, 'create'])
     router.post('/login', [AuthController, 'signin'])
     router.get('/', [HomeController, 'index'])
-    
+
     router.post('/logout', [AuthController, 'logout'])
-    
+
     router
-    .group(() => {
-      router.get('/shop/pay/card', [BarangsController, 'card'])
-      router.get('/shop/status', [BarangsController, 'status'])
-      router.get('/shop/pay', [BarangsController, 'pay'])
-      router.get('/schedule', [EventController, 'index'])
-      router.get('/profile', [HomeController, 'profile'])
-      router.get('/schedule/add-event', [HomeController, 'addEvent'])
-      router.post('/addEvent', [EventController, 'create'])
+      .group(() => {
+        router.get('/shop/pay/card', [BarangsController, 'card'])
+        router.get('/shop/status', [BarangsController, 'status'])
+        router.get('/shop/pay', [BarangsController, 'pay'])
+        router.get('/schedule', [EventController, 'index'])
+        router.get('/profile', [HomeController, 'profile'])
+        router.get('/schedule/add-event', [HomeController, 'addEvent'])
+        router.post('/addEvent', [EventController, 'create'])
       })
       .use([middleware.authenticate()])
 

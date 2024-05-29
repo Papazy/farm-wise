@@ -6,7 +6,7 @@ export default class CheckAuthMiddleware {
     /**
      * Middleware logic goes here (before the next call)
      */
-    console.log(ctx)
+    
     try {
       await ctx.auth.check()
     } catch (error) {

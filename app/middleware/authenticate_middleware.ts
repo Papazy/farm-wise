@@ -6,10 +6,13 @@ export default class AuthenticateMiddleware {
     /**
      * Middleware logic goes here (before the next call)
      */
-    console.log(ctx)
-    try{
+    
+    try {
       await ctx.auth.check()
-    }catch(error){
+      if (!ctx.auth.user) {
+        return ctx.response.redirect('/login')
+      }
+    } catch (error) {
       console.log(error)
       return ctx.response.redirect('/login')
     }

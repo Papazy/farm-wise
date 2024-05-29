@@ -21,10 +21,10 @@
           <p class="text-3xl font-bold tracking-wide text-white pl-40"> To Farm Wise App</p>
         </div>
         <form action="/signup" method="POST">
-        @if (flashMessages.has('form'))
-          <div role="alert">
-            {{ flashMessages.get('form') }}
-          </div>
+        @if (flashMessages.has('error'))
+        <div class="p-2 bg-green-800 rounded max-w-64 text-center" role="alert" style="color:red" >
+          ! {{ flashMessages.get('error') }}
+        </div>
         @endif
           {{ csrfField() }}
         <div class="form-data flex flex-col justify-center items-center">

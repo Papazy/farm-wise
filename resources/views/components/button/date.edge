@@ -1,4 +1,11 @@
-<div class="rounded-full bg-white flex flex-col gap-2 justify-center items-center w-14 h-20 hover:text-white hover:bg-slate-700 transition-all cursor-pointer">
-  <p>{{ date }}</p>
+@if(selectedDate == date.getDate())
+<a href="{{ 'schedule?d='+ date.toISOString().split('T')[0] }}" class="rounded-full bg-slate-700 flex flex-col gap-2 justify-center items-center w-14 h-20 text-white hover:bg-slate-700 transition-all cursor-pointer">
+  <p>{{ date.getDate() }}</p>
   <p>{{ day }}</p>
-</div>
+</a>
+@else
+<a href="{{ 'schedule?d='+ date.toISOString().split('T')[0] }}" class="rounded-full bg-white flex flex-col gap-2 justify-center items-center w-14 h-20 hover:text-white hover:bg-slate-700 transition-all cursor-pointer">
+  <p>{{ date.getDate() }}</p>
+  <p>{{ day }}</p>
+</a>
+@endif

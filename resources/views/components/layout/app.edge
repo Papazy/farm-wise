@@ -16,14 +16,11 @@
 <body>
   @include('components/layout/partials/navbar')
 
- 
-
   <div class="px-4">
-    
     {{{ await $slots.main() }}}
   </div>
- 
-
+  
+  @include('components/layout/partials/footer2')
 
 </body>
 </html>

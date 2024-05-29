@@ -18,7 +18,7 @@ export default class extends BaseSeeder {
         jamAkhir: '10:00',
         tanggal: '2021-09-02 ',
         username: 'john_doe',
-      }
+      },
     ])
   }
 }

@@ -13,16 +13,20 @@ export default class AuthController {
     const { email, password, role } = request.all()
 
     // const user = await User.query().where('email', email).where('password', password).first()
+    try {
+      const user = await User.verifyCredentials(email, password)
 
-    const user = await User.verifyCredentials(email, password)
+      if (user?.role !== role) {
+        session.flash('error', 'Role tidak sesuai')
+        return response.redirect('/login')
+      }
+      await auth.use('web').login(user)
 
-    if (user?.role !== role) {
-      session.flash('error', 'Role tidak sesuai')
+      return response.redirect('/')
+    } catch (error) {
+      session.flash('error', 'Email atau password atau role salah')
       return response.redirect('/login')
     }
-    await auth.use('web').login(user)
-
-    return response.redirect('/')
   }
 
   async logout({ auth, response }: HttpContext) {
@@ -31,13 +35,26 @@ export default class AuthController {
     return response.redirect('/login')
   }
 
-  async create({ request, auth, response }: HttpContext) {
+  async create({ request, auth, response, session }: HttpContext) {
     const { username, email, password, role } = request.all()
-
-    const user = await User.create({ username, email, password, role })
-
-    await auth.use('web').login(user)
-
-    return response.redirect('/')
+    try {
+      // periksa apakah ada user dengan email yang sama
+      const userEmail = await User.query().where('email', email).first()
+      if (userEmail) {
+        session.flash('error', 'Email sudah terdaftar')
+        return response.redirect('/signup')
+      }
+      const user = await User.create({ username, email, password, role })
+      await auth.use('web').login(user)
+      return response.redirect('/')
+    } catch (error) {
+      console.log(error.errno)
+      if (error.code == 'ER_DUP_ENTRY') {
+        session.flash('error', 'User sudah ada')
+      }else{
+        session.flash('error', 'Masukkan email atau password dengan benar')
+      }
+      return response.redirect('/signup')
+    }
   }
 }

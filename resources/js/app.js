@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     profileDropdownMenu.classList.toggle('hidden')
   })
 
-  // modal
-
   // Get elements
   const openModalBtn = document.getElementById('openModalBtn')
   const closeModalBtn = document.getElementById('closeModalBtn')
